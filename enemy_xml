@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<enemies>
+	<enemy>
+		<name>a</name>
+		<damage>2</damage>
+		<health>2</health>
+		<description>s</description>
+	</enemy>
+	<enemy>
+		<name>a</name>
+		<damage>3</damage>
+		<health>4</health>
+		<description>f</description>
+	</enemy>
+</enemies>
