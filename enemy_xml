@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <enemies>
 	<enemy>
-		<name>a</name>
-		<damage>2</damage>
-		<health>2</health>
-		<description>s</description>
+		<name>Patatudo</name>
+		<damage>10</damage>
+		<health>10</health>
+		<description>10</description>
 	</enemy>
 	<enemy>
-		<name>a</name>
-		<damage>3</damage>
-		<health>4</health>
-		<description>f</description>
+		<name>Patatudo2</name>
+		<damage>15</damage>
+		<health>15</health>
+		<description>15</description>
+	</enemy>
+	<enemy>
+		<name>Patatudo3</name>
+		<damage>20</damage>
+		<health>20</health>
+		<description>20</description>
 	</enemy>
 </enemies>

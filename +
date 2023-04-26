@@ -7,7 +7,7 @@ class Enemy:
 		self.strength = strength
 		self.description = description
 		
-		print(self.name+": "+slef.description)
+		print(self.name+": "+self.description)
 
 if __name__ == "__main__":
 
