@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import xmltodict
 import os
 import random	
@@ -5,7 +6,8 @@ nombre = input("Como te llamas? ")
 os.system("clear")
 
 enemy_files = "enemy_xml"
-print(f"BIENVENIDO {nombre} A NUESTRO JUEGO")
+
+print("BIENVENIDO "+(nombre)+" A NUESTRO JUEGO")
 
 with open(enemy_files, "r") as f:
 	xml_string = f.read()
@@ -32,7 +34,7 @@ while True:
 
 	if action == "ataca":
 		damage = random.randint(0, 5)
-		juego.health -= damage
+		health -= damage
 		print(f"Has quitado {damage} puntos de vida al enemigo.")
 	else:
 		print("Espabila que te matan")
@@ -41,7 +43,7 @@ while True:
 	player_health -= player_damage
 	print(f"El enemigo te ha quitado {player_damage} puntos de vida.")
 
-	if (juego.health <= 0) and (numero>len(enemy_dict)) :
+	if (health <= 0) and (numero>len(enemy_dict)) :
 		print("Acabaste con él. ¡Felicidades!")
 		break
     
