@@ -45,56 +45,63 @@ class Player:
 	
 	def hurt (self, damage):
 		
-	
-		self.health-=damage
-			
-		if self.health >=0:
-			return False
-		return True
+		if health >=0:
+			health-=damage
+			return false
+		if health <=0:
+			return true
 
 	def attack (self):
-		return random.randint(0, self.strength)
+		return random.randint(0,self.strength)
 	
 	def show_info (self):
-		print("Name: "+self.name)
+		print("Name: "+(self.name))
 		print("Health: "+str(self.health))
 		print("Strength: "+str(self.strength))
 		print("Level: "+str(self.level))
 		print("XP: "+str(self.xp))
 			
 	def input_info(self):
-		self.name=(input("Dime tu nombre: "))
+		self.name=int(input("Dime tu nombre: "))
 		self.health=int(input("Dime tu vida: "))
 		self.strength=int(input("Dime fuerza: "))
 		self.level=int(input("Dime tu nivel: "))
 		self.xp=int(input("Dime tu cantidad de experiencia: "))
+		
+		return{
+		"name": self.name,
+		"health": self.health,
+		"strength": self.strength,
+		"level": self.level,
+		"xp": self.xp
+		}
 
 
-	def write_info(self):
-		info = {
-				"name": self.name,
-				"health": self.health,
-				"strength": self.strength,
-				"level": self.level,
-				"xp": self.xp
-			}
-		player_info = {
-				"player": info
-			}
-		xml_file = open("player_xml", "w")
-		xml_file.write(xmltodict.unparse(player_info))
+	def write_info(self, export):
+		player_xml = xmltodict.unparse(export, pretty=True)
+		print(player_xml)
+		f = open("player_xml", "w")
+		f.write(player_xml)
+
+		f.close()
 	
-
 	def read_info (self):
 		xml_file=open("player_xml", "r")
 		player_tmp=xmltodict.parse(xml_file.read())
-		info=player_tmp["player"]
-
+		info=player_tmp["player_save"]["player"]
 		self.name = info["name"]
 		self.health = int(info["health"])
-		self.strength = int(info["strength"])
-		self.level = int(info["level"])
-		self.xp = int(info["xp"])
+		self.strength = info["strength"]
+		self.level = info["level"]
+		self.xp = info["xp"]
+
+def show_info (self):
+		print("Name: " + str(self.name))
+		print("Health: " + str(self.health))
+		print("Strength: " + str(self.strength))
+		print("Level: " + str(self.level))
+		print("XP:" + str(self.xp))
+		
 
 if __name__ == "__main__":
 	player = Player("Juan Ramon")

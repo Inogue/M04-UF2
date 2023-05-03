@@ -16,10 +16,10 @@ class Enemy:
 
 	def hurt (self, damage):
 	
-		if health >= 0:
-			health-=damage
+		if self.health >= 0:
+			self.health-=damage
 			return false
-		if health  <= 0:
+		if self.health  <= 0:
 			return true
 
 	def show_info (self):
@@ -35,7 +35,5 @@ if __name__ == "__main__":
 	enemigo = Enemy("Jacinto", 33, 10, "Simplemente Jacinto"); 
 	
 	enemigo.show_info()
-	print(enemigo.hurt(enemigo.attack())
-
+	print(enemigo.hurt(enemigo.attack()))
 	enemigo.show_info()
-
