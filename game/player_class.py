@@ -2,6 +2,7 @@
 
 import xmltodict
 import random
+import json
 
 class Player:
 	def __init__ (self, name="", health=100, strength=10, level=1, xp=0):
@@ -43,14 +44,12 @@ class Player:
 	def set_xp (self, xp):
 		self.xp=xp
 	
-	def hurt (self, damage):
-		
-	
+	def hurt (self, damage):	
 		self.health-=damage
 			
-		if self.health >=0:
-			return False
-		return True
+		if self.health <=0:
+			return True
+		return False
 
 	def attack (self):
 		return random.randint(0, self.strength)
@@ -72,22 +71,37 @@ class Player:
 
 	def write_info(self):
 		info = {
-				"name": self.name,
-				"health": self.health,
-				"strength": self.strength,
-				"level": self.level,
-				"xp": self.xp
+				"name ": self.name,
+				"health ": self.health,
+				"strength ": self.strength,
+				"level ": self.level,
+				"xp ": self.xp
 			}
 		player_info = {
 				"player": info
 			}
 		xml_file = open("player_xml", "w")
 		xml_file.write(xmltodict.unparse(player_info))
+		xml_file.close()
 	
-
+	def write_info_js(self):
+		info = {
+			"name": self.name,
+			"health": self.health,
+			"strength": self.strength,
+			"level": self.level,
+			"xp": self.xp
+			}
+		player_info = {
+			"player": info
+			}
+		with open("player.json", "w") as p:
+			json.dump(player_info, p)
+	
 	def read_info (self):
 		xml_file=open("player_xml", "r")
 		player_tmp=xmltodict.parse(xml_file.read())
+		xml_file.close()
 		info=player_tmp["player"]
 
 		self.name = info["name"]
@@ -95,8 +109,18 @@ class Player:
 		self.strength = int(info["strength"])
 		self.level = int(info["level"])
 		self.xp = int(info["xp"])
+	
+	def read_info_js(self):
+		with open("player.json") as p:
+			data = json.load(p)
+		
+		info=data["player"]
+		self.name=str(info["name"])
+		self.health = int(info["health"])
+		self.strength = int(info["strength"])
+		self.level = int(info["level"])
+		self.xp = int(info["xp"])
 
 if __name__ == "__main__":
 	player = Player("Juan Ramon")
-	
 	print(player.get_level(100))
